@@ -1,0 +1,512 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		79FEE85A1CC02B6F00431DAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FEE8591CC02B6F00431DAD /* AppDelegate.m */; };
+		79FEE85D1CC02B6F00431DAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FEE85C1CC02B6F00431DAD /* main.m */; };
+		79FEE8601CC02B6F00431DAD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FEE85F1CC02B6F00431DAD /* ViewController.m */; };
+		79FEE8621CC02B6F00431DAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79FEE8611CC02B6F00431DAD /* Assets.xcassets */; };
+		79FEE8651CC02B6F00431DAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79FEE8631CC02B6F00431DAD /* Main.storyboard */; };
+		79FEE8701CC02B6F00431DAD /* CHYZSuperSilenceDetectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FEE86F1CC02B6F00431DAD /* CHYZSuperSilenceDetectorTests.m */; };
+		79FEE87B1CC02B6F00431DAD /* CHYZSuperSilenceDetectorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FEE87A1CC02B6F00431DAD /* CHYZSuperSilenceDetectorUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		79FEE86C1CC02B6F00431DAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 79FEE84D1CC02B6F00431DAD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 79FEE8541CC02B6F00431DAD;
+			remoteInfo = CHYZSuperSilenceDetector;
+		};
+		79FEE8771CC02B6F00431DAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 79FEE84D1CC02B6F00431DAD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 79FEE8541CC02B6F00431DAD;
+			remoteInfo = CHYZSuperSilenceDetector;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		79FEE8551CC02B6F00431DAD /* CHYZSuperSilenceDetector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CHYZSuperSilenceDetector.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		79FEE8581CC02B6F00431DAD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		79FEE8591CC02B6F00431DAD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		79FEE85C1CC02B6F00431DAD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		79FEE85E1CC02B6F00431DAD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		79FEE85F1CC02B6F00431DAD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		79FEE8611CC02B6F00431DAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		79FEE8641CC02B6F00431DAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		79FEE8661CC02B6F00431DAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79FEE86B1CC02B6F00431DAD /* CHYZSuperSilenceDetectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CHYZSuperSilenceDetectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		79FEE86F1CC02B6F00431DAD /* CHYZSuperSilenceDetectorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHYZSuperSilenceDetectorTests.m; sourceTree = "<group>"; };
+		79FEE8711CC02B6F00431DAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79FEE8761CC02B6F00431DAD /* CHYZSuperSilenceDetectorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CHYZSuperSilenceDetectorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		79FEE87A1CC02B6F00431DAD /* CHYZSuperSilenceDetectorUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHYZSuperSilenceDetectorUITests.m; sourceTree = "<group>"; };
+		79FEE87C1CC02B6F00431DAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		79FEE8521CC02B6F00431DAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79FEE8681CC02B6F00431DAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79FEE8731CC02B6F00431DAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		79FEE84C1CC02B6F00431DAD = {
+			isa = PBXGroup;
+			children = (
+				79FEE8571CC02B6F00431DAD /* CHYZSuperSilenceDetector */,
+				79FEE86E1CC02B6F00431DAD /* CHYZSuperSilenceDetectorTests */,
+				79FEE8791CC02B6F00431DAD /* CHYZSuperSilenceDetectorUITests */,
+				79FEE8561CC02B6F00431DAD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		79FEE8561CC02B6F00431DAD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				79FEE8551CC02B6F00431DAD /* CHYZSuperSilenceDetector.app */,
+				79FEE86B1CC02B6F00431DAD /* CHYZSuperSilenceDetectorTests.xctest */,
+				79FEE8761CC02B6F00431DAD /* CHYZSuperSilenceDetectorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		79FEE8571CC02B6F00431DAD /* CHYZSuperSilenceDetector */ = {
+			isa = PBXGroup;
+			children = (
+				79FEE8581CC02B6F00431DAD /* AppDelegate.h */,
+				79FEE8591CC02B6F00431DAD /* AppDelegate.m */,
+				79FEE85E1CC02B6F00431DAD /* ViewController.h */,
+				79FEE85F1CC02B6F00431DAD /* ViewController.m */,
+				79FEE8611CC02B6F00431DAD /* Assets.xcassets */,
+				79FEE8631CC02B6F00431DAD /* Main.storyboard */,
+				79FEE8661CC02B6F00431DAD /* Info.plist */,
+				79FEE85B1CC02B6F00431DAD /* Supporting Files */,
+			);
+			path = CHYZSuperSilenceDetector;
+			sourceTree = "<group>";
+		};
+		79FEE85B1CC02B6F00431DAD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				79FEE85C1CC02B6F00431DAD /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		79FEE86E1CC02B6F00431DAD /* CHYZSuperSilenceDetectorTests */ = {
+			isa = PBXGroup;
+			children = (
+				79FEE86F1CC02B6F00431DAD /* CHYZSuperSilenceDetectorTests.m */,
+				79FEE8711CC02B6F00431DAD /* Info.plist */,
+			);
+			path = CHYZSuperSilenceDetectorTests;
+			sourceTree = "<group>";
+		};
+		79FEE8791CC02B6F00431DAD /* CHYZSuperSilenceDetectorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				79FEE87A1CC02B6F00431DAD /* CHYZSuperSilenceDetectorUITests.m */,
+				79FEE87C1CC02B6F00431DAD /* Info.plist */,
+			);
+			path = CHYZSuperSilenceDetectorUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		79FEE8541CC02B6F00431DAD /* CHYZSuperSilenceDetector */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 79FEE87F1CC02B6F00431DAD /* Build configuration list for PBXNativeTarget "CHYZSuperSilenceDetector" */;
+			buildPhases = (
+				79FEE8511CC02B6F00431DAD /* Sources */,
+				79FEE8521CC02B6F00431DAD /* Frameworks */,
+				79FEE8531CC02B6F00431DAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CHYZSuperSilenceDetector;
+			productName = CHYZSuperSilenceDetector;
+			productReference = 79FEE8551CC02B6F00431DAD /* CHYZSuperSilenceDetector.app */;
+			productType = "com.apple.product-type.application";
+		};
+		79FEE86A1CC02B6F00431DAD /* CHYZSuperSilenceDetectorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 79FEE8821CC02B6F00431DAD /* Build configuration list for PBXNativeTarget "CHYZSuperSilenceDetectorTests" */;
+			buildPhases = (
+				79FEE8671CC02B6F00431DAD /* Sources */,
+				79FEE8681CC02B6F00431DAD /* Frameworks */,
+				79FEE8691CC02B6F00431DAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				79FEE86D1CC02B6F00431DAD /* PBXTargetDependency */,
+			);
+			name = CHYZSuperSilenceDetectorTests;
+			productName = CHYZSuperSilenceDetectorTests;
+			productReference = 79FEE86B1CC02B6F00431DAD /* CHYZSuperSilenceDetectorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		79FEE8751CC02B6F00431DAD /* CHYZSuperSilenceDetectorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 79FEE8851CC02B6F00431DAD /* Build configuration list for PBXNativeTarget "CHYZSuperSilenceDetectorUITests" */;
+			buildPhases = (
+				79FEE8721CC02B6F00431DAD /* Sources */,
+				79FEE8731CC02B6F00431DAD /* Frameworks */,
+				79FEE8741CC02B6F00431DAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				79FEE8781CC02B6F00431DAD /* PBXTargetDependency */,
+			);
+			name = CHYZSuperSilenceDetectorUITests;
+			productName = CHYZSuperSilenceDetectorUITests;
+			productReference = 79FEE8761CC02B6F00431DAD /* CHYZSuperSilenceDetectorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		79FEE84D1CC02B6F00431DAD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "CHYZ 94,3 FM";
+				TargetAttributes = {
+					79FEE8541CC02B6F00431DAD = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					79FEE86A1CC02B6F00431DAD = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 79FEE8541CC02B6F00431DAD;
+					};
+					79FEE8751CC02B6F00431DAD = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 79FEE8541CC02B6F00431DAD;
+					};
+				};
+			};
+			buildConfigurationList = 79FEE8501CC02B6F00431DAD /* Build configuration list for PBXProject "CHYZSuperSilenceDetector" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 79FEE84C1CC02B6F00431DAD;
+			productRefGroup = 79FEE8561CC02B6F00431DAD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				79FEE8541CC02B6F00431DAD /* CHYZSuperSilenceDetector */,
+				79FEE86A1CC02B6F00431DAD /* CHYZSuperSilenceDetectorTests */,
+				79FEE8751CC02B6F00431DAD /* CHYZSuperSilenceDetectorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		79FEE8531CC02B6F00431DAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79FEE8621CC02B6F00431DAD /* Assets.xcassets in Resources */,
+				79FEE8651CC02B6F00431DAD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79FEE8691CC02B6F00431DAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79FEE8741CC02B6F00431DAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		79FEE8511CC02B6F00431DAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79FEE8601CC02B6F00431DAD /* ViewController.m in Sources */,
+				79FEE85D1CC02B6F00431DAD /* main.m in Sources */,
+				79FEE85A1CC02B6F00431DAD /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79FEE8671CC02B6F00431DAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79FEE8701CC02B6F00431DAD /* CHYZSuperSilenceDetectorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79FEE8721CC02B6F00431DAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79FEE87B1CC02B6F00431DAD /* CHYZSuperSilenceDetectorUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		79FEE86D1CC02B6F00431DAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 79FEE8541CC02B6F00431DAD /* CHYZSuperSilenceDetector */;
+			targetProxy = 79FEE86C1CC02B6F00431DAD /* PBXContainerItemProxy */;
+		};
+		79FEE8781CC02B6F00431DAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 79FEE8541CC02B6F00431DAD /* CHYZSuperSilenceDetector */;
+			targetProxy = 79FEE8771CC02B6F00431DAD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		79FEE8631CC02B6F00431DAD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79FEE8641CC02B6F00431DAD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		79FEE87D1CC02B6F00431DAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		79FEE87E1CC02B6F00431DAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		79FEE8801CC02B6F00431DAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CHYZSuperSilenceDetector/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = COMEUL.CHYZSuperSilenceDetector;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		79FEE8811CC02B6F00431DAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CHYZSuperSilenceDetector/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = COMEUL.CHYZSuperSilenceDetector;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		79FEE8831CC02B6F00431DAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CHYZSuperSilenceDetectorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = COMEUL.CHYZSuperSilenceDetectorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CHYZSuperSilenceDetector.app/Contents/MacOS/CHYZSuperSilenceDetector";
+			};
+			name = Debug;
+		};
+		79FEE8841CC02B6F00431DAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CHYZSuperSilenceDetectorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = COMEUL.CHYZSuperSilenceDetectorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CHYZSuperSilenceDetector.app/Contents/MacOS/CHYZSuperSilenceDetector";
+			};
+			name = Release;
+		};
+		79FEE8861CC02B6F00431DAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CHYZSuperSilenceDetectorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = COMEUL.CHYZSuperSilenceDetectorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CHYZSuperSilenceDetector;
+			};
+			name = Debug;
+		};
+		79FEE8871CC02B6F00431DAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CHYZSuperSilenceDetectorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = COMEUL.CHYZSuperSilenceDetectorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CHYZSuperSilenceDetector;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		79FEE8501CC02B6F00431DAD /* Build configuration list for PBXProject "CHYZSuperSilenceDetector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79FEE87D1CC02B6F00431DAD /* Debug */,
+				79FEE87E1CC02B6F00431DAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		79FEE87F1CC02B6F00431DAD /* Build configuration list for PBXNativeTarget "CHYZSuperSilenceDetector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79FEE8801CC02B6F00431DAD /* Debug */,
+				79FEE8811CC02B6F00431DAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		79FEE8821CC02B6F00431DAD /* Build configuration list for PBXNativeTarget "CHYZSuperSilenceDetectorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79FEE8831CC02B6F00431DAD /* Debug */,
+				79FEE8841CC02B6F00431DAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		79FEE8851CC02B6F00431DAD /* Build configuration list for PBXNativeTarget "CHYZSuperSilenceDetectorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				79FEE8861CC02B6F00431DAD /* Debug */,
+				79FEE8871CC02B6F00431DAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 79FEE84D1CC02B6F00431DAD /* Project object */;
+}
