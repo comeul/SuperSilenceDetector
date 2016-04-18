@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "AudioManager.h"
 
-@interface ViewController : NSViewController <AudioManagerDelegate>
+@interface ViewController : NSViewController <AudioManagerDelegate, NSSharingServiceDelegate>
 
 @property (weak) IBOutlet NSTextField *currentDevice;
 @property (weak) IBOutlet NSTextField *currentDecibelValue;
