@@ -8,6 +8,8 @@
 
 #import "AudioManager.h"
 
+static const int ddLogLevel = DDLogLevelDebug;
+
 
 @implementation AudioManager
 {
@@ -33,18 +35,42 @@
     if( self )
     {
         self.delegate = sender;
-        NSArray *inputDevices = [EZAudioDevice inputDevices];
         
-        selectedDevice = inputDevices[1];
+    }
+    
+    return self;
+}
+
+- (void) startListening
+{
+    [microphone startFetchingAudio];
+}
+
+- (void) stopListening
+{
+    [microphone stopFetchingAudio];
+}
+
+- (bool) setDeviceWithName:(NSString *)deviceTitle
+{
+    NSArray *inputDevices = [EZAudioDevice inputDevices];
+    for (EZAudioDevice *input in inputDevices)
+    {
+        if ([input.name isEqualToString:deviceTitle]) {
+            selectedDevice = input;
+            break;
+        }
+    }
+    
+    if (selectedDevice)
+    {
         [self.delegate setCurrentSelectedDevice:selectedDevice.name];
         
         microphone = [EZMicrophone microphoneWithDelegate:self];
         [microphone setDevice:selectedDevice];
-        
-        [microphone startFetchingAudio];
-    }
-    
-    return self;
+        return YES;
+    } else
+        return NO;
 }
 
 - (void) microphone:(EZMicrophone *)microphone changedDevice:(EZAudioDevice *)device
@@ -53,7 +79,7 @@
     // wrap it in a GCD block
     dispatch_async(dispatch_get_main_queue(), ^{
         // Update UI here
-        NSLog(@"Changed input device: %@", device);
+        DDLogVerbose(@"Changed input device: %@", device);
     });
 }
 
@@ -65,23 +91,21 @@
     // the microphone data.
     dispatch_async(dispatch_get_main_queue(),^{
         // Visualize this data brah, buffer[0] = left channel, buffer[1] = right channel
-//        [weakSelf.audioPlot updateBuffer:buffer[0] withBufferSize:bufferSize];
-        if ((*buffer[0] < 0.0005) && (*buffer[0] > -0.0005)) {
-//            NSLog(@"hasAudioReceived %f, withBufferSize %u", *buffer[0], (unsigned int)bufferSize);
-        }
+        //
+        [weakSelf updatePlotBuffer:buffer[0] withBufferSize:bufferSize];
     });
+}
+
+- (void) updatePlotBuffer:(float*)buffer withBufferSize:(float)bufferSize
+{
+    [self.delegate updatePlotBuffer:buffer withBufferSize:bufferSize];
 }
 
 -(void)    microphone:(EZMicrophone *)microphone hasBufferList:(AudioBufferList *)bufferList withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels
 {
-//    if ((*buffer[0] < 0.0005) && (*buffer[0] > -0.0005)) {
-//        NSLog(@"hasAudioReceived , withBufferSize %u", (unsigned int)bufferSize);
-//    }
-    
-    
 //    OSStatus err = AudioUnitRender(audioUnitWrapper->audioUnit, ioActionFlags, inTimeStamp, 1, inNumberFrames, ioData);
     
-//    if(err != 0) NSLog(@"AudioUnitRender status is %d", err);
+//    if(err != 0) DDLogError(@"AudioUnitRender status is %d", err);
     // These values should be in a more conventional location
     //for a bunch of preprocessor defines in your real code
 #define DBOFFSET 0.0
@@ -109,8 +133,8 @@
         
         // Step 3: for each sample's absolute value, run it through a simple low-pass filter
         // Begin low-pass filter
-        currentFilteredValueOfSampleAmplitude = LOWPASSFILTERTIMESLICE * absoluteValueOfSampleAmplitude + (1.0 - LOWPASSFILTERTIMESLICE) * previousFilteredValueOfSampleAmplitude;
-        previousFilteredValueOfSampleAmplitude = currentFilteredValueOfSampleAmplitude;
+    currentFilteredValueOfSampleAmplitude = LOWPASSFILTERTIMESLICE * absoluteValueOfSampleAmplitude + (1.0 - LOWPASSFILTERTIMESLICE);// * previousFilteredValueOfSampleAmplitude;
+//        previousFilteredValueOfSampleAmplitude = currentFilteredValueOfSampleAmplitude;
         Float32 amplitudeToConvertToDB = currentFilteredValueOfSampleAmplitude;
         // End low-pass filter
         
@@ -128,7 +152,6 @@
         }
 //    }
     
-//    NSLog(@"decibel level is %f", decibels);
     [self.delegate setDecibelLevel:decibels];
     
 //    for (UInt32 i=0; i < bufferList->mNumberBuffers; i++) { // This is only if you need to silence

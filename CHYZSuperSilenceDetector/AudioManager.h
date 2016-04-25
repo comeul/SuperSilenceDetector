@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
 #import "EZAudioDevice.h"
 #import "EZRecorder.h"
 #import "EZMicrophone.h"
@@ -14,6 +15,7 @@
 @protocol AudioManagerDelegate <NSObject>
 - (void) setDecibelLevel:(Float32)decibels;
 - (void) setCurrentSelectedDevice:(NSString*)device;
+- (void) updatePlotBuffer:(float*)buffer withBufferSize:(float)bufferSize;
 
 
 @end
@@ -23,5 +25,9 @@
 @property (nonatomic, weak) id <AudioManagerDelegate> delegate;
 
 -(id) initWithDelegate:(id<AudioManagerDelegate>)sender;
+
+- (bool) setDeviceWithName:(NSString *)deviceTitle;
+- (void) startListening;
+- (void) stopListening;
 
 @end

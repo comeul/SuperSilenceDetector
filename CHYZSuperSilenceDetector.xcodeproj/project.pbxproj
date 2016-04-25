@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		24E9507BF3DB923260AB7FCE /* libPods-CHYZSuperSilenceDetector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A10746E7665DFAD95B716A /* libPods-CHYZSuperSilenceDetector.a */; };
+		79A84BC61CC6C13300543DEA /* InputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A84BC51CC6C13300543DEA /* InputViewController.m */; };
+		79A84BC91CC6D6A900543DEA /* MailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A84BC81CC6D6A900543DEA /* MailViewController.m */; };
+		79E9AC241CC590B300D686C4 /* OverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E9AC231CC590B300D686C4 /* OverviewViewController.m */; };
 		79FEE85A1CC02B6F00431DAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FEE8591CC02B6F00431DAD /* AppDelegate.m */; };
 		79FEE85D1CC02B6F00431DAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FEE85C1CC02B6F00431DAD /* main.m */; };
 		79FEE8601CC02B6F00431DAD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FEE85F1CC02B6F00431DAD /* ViewController.m */; };
@@ -38,6 +41,12 @@
 
 /* Begin PBXFileReference section */
 		3E35A48DCCF037A0C494A062 /* Pods-CHYZSuperSilenceDetector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CHYZSuperSilenceDetector.release.xcconfig"; path = "Pods/Target Support Files/Pods-CHYZSuperSilenceDetector/Pods-CHYZSuperSilenceDetector.release.xcconfig"; sourceTree = "<group>"; };
+		79A84BC41CC6C13300543DEA /* InputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputViewController.h; sourceTree = "<group>"; };
+		79A84BC51CC6C13300543DEA /* InputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputViewController.m; sourceTree = "<group>"; };
+		79A84BC71CC6D6A900543DEA /* MailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailViewController.h; sourceTree = "<group>"; };
+		79A84BC81CC6D6A900543DEA /* MailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailViewController.m; sourceTree = "<group>"; };
+		79E9AC221CC590B300D686C4 /* OverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewViewController.h; sourceTree = "<group>"; };
+		79E9AC231CC590B300D686C4 /* OverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewViewController.m; sourceTree = "<group>"; };
 		79FEE8551CC02B6F00431DAD /* CHYZSuperSilenceDetector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CHYZSuperSilenceDetector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79FEE8581CC02B6F00431DAD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		79FEE8591CC02B6F00431DAD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -122,6 +131,12 @@
 				79FEE8881CC0367300431DAD /* AudioManager.h */,
 				79FEE8891CC0367300431DAD /* AudioManager.m */,
 				79FEE88B1CC03F9800431DAD /* DatAshe.wav */,
+				79E9AC221CC590B300D686C4 /* OverviewViewController.h */,
+				79E9AC231CC590B300D686C4 /* OverviewViewController.m */,
+				79A84BC41CC6C13300543DEA /* InputViewController.h */,
+				79A84BC51CC6C13300543DEA /* InputViewController.m */,
+				79A84BC71CC6D6A900543DEA /* MailViewController.h */,
+				79A84BC81CC6D6A900543DEA /* MailViewController.m */,
 			);
 			path = CHYZSuperSilenceDetector;
 			sourceTree = "<group>";
@@ -239,6 +254,7 @@
 				TargetAttributes = {
 					79FEE8541CC02B6F00431DAD = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 2NC7X5YPQT;
 					};
 					79FEE86A1CC02B6F00431DAD = {
 						CreatedOnToolsVersion = 7.3;
@@ -351,9 +367,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				79FEE8601CC02B6F00431DAD /* ViewController.m in Sources */,
+				79A84BC61CC6C13300543DEA /* InputViewController.m in Sources */,
 				79FEE85D1CC02B6F00431DAD /* main.m in Sources */,
 				79FEE88A1CC0367300431DAD /* AudioManager.m in Sources */,
 				79FEE85A1CC02B6F00431DAD /* AppDelegate.m in Sources */,
+				79A84BC91CC6D6A900543DEA /* MailViewController.m in Sources */,
+				79E9AC241CC590B300D686C4 /* OverviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,9 +505,11 @@
 			baseConfigurationReference = 7E96BB086A9A7D2F138A91E2 /* Pods-CHYZSuperSilenceDetector.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = CHYZSuperSilenceDetector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = COMEUL.CHYZSuperSilenceDetector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -499,9 +520,11 @@
 			baseConfigurationReference = 3E35A48DCCF037A0C494A062 /* Pods-CHYZSuperSilenceDetector.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = CHYZSuperSilenceDetector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = COMEUL.CHYZSuperSilenceDetector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

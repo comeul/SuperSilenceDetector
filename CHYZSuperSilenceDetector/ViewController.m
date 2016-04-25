@@ -7,7 +7,10 @@
 //
 
 #import "ViewController.h"
+#import <CocoaLumberjack/CocoaLumberjack.h>
 #include <MailCore/MailCore.h>
+
+static const int ddLogLevel = DDLogLevelDebug;
 
 @implementation ViewController
 {
@@ -18,6 +21,16 @@
     int errMarging;
     
     NSTimer * decibelUpdate;
+    
+    NSFileManager *fileManager;
+    
+    float decibelMin;
+    int seconds;
+    int marging;;
+    
+    bool isRunning;
+    
+    bool silenceFired;
 }
 
 - (void)viewDidLoad {
@@ -27,7 +40,22 @@
     
     audioMan = [AudioManager.alloc initWithDelegate:self];
     
-    decibelUpdate = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(updateDecibelValue:) userInfo:nil repeats:YES];
+    fileManager = [NSFileManager defaultManager];
+    NSString *documentsPath = [[NSBundle mainBundle] resourcePath];
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:@"input.json"];
+    BOOL fileExists = [fileManager fileExistsAtPath:filePath];
+    if (fileExists) {
+        NSData *jsonData = [fileManager contentsAtPath:filePath];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
+
+        if ([[json objectForKey:@"au_demarrage"] intValue] == 1) {
+            [self start];
+        }
+    }
+    
+    decibelUpdate = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateDecibelValue:) userInfo:nil repeats:YES];
+
+    
     
     
     // Do any additional setup after loading the view.
@@ -43,71 +71,157 @@
 {
 //    dispatch_async(dispatch_get_main_queue(),^{
         [self.currentDecibelValue setStringValue:[NSString stringWithFormat:@"%f", currentDecibels]];
+    [self.overviewController updateDecibelValue:currentDecibels];
 //    });
 }
 
 - (void) silence:(NSTimer*)sender
 {
-    NSLog(@"THATS A SILENCE");
+    DDLogError(@"THATS A SILENCE");
+    silenceFired = YES;
+    errMarging = 0;
     [self sendMail];
 //    [countdown invalidate];
 //    countdown = nil;
-//    errMarging = 0;
 
+}
+
+- (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"mainSegue"])
+    {
+        //1
+        NSTabViewController * tabViewController = segue.destinationController;
+        //2
+        for (NSViewController * controller in tabViewController.childViewControllers) {
+            //3
+            if ([controller isKindOfClass:[OverviewViewController class]]) {
+                self.overviewController = (OverviewViewController *)controller;
+                self.overviewController.delegate = self;
+                
+                [self.overviewController setIsRunning:isRunning];
+            }
+        }
+    }
 }
 
 - (void) sendMail
 {
-//    NSLog(@"Proc");
-//    NSArray *shareItems=@[@"Salut"];
-//    NSSharingService *service = [NSSharingService sharingServiceNamed:NSSharingServiceNameComposeEmail];
-//    service.delegate = self;
-//    service.recipients=@[@"webmestre@comeul.ca"];
-//    service.subject= [ NSString stringWithFormat:@"%@ %@",NSLocalizedString(@"SLYRunner console",nil), [NSDate date]];
-//    [service performWithItems:shareItems];
-//}
-//
-//- (void)sendEmailWithMail:(NSString *) senderAddress Address:(NSString *) toAddress Subject:(NSString *) subject Body:(NSString *) bodyText {
     
-//    NSString *toAddress = @"webmestre@chyz.ca";
-//    NSString *subject = @"Notif";
-//    NSString *bodyText = @"Salut";
-//
-//    
-//    NSString *mailtoAddress = [[NSString stringWithFormat:@"mailto:%@?Subject=%@&body=%@",toAddress,subject,bodyText] stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-//    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:mailtoAddress]];
-//    NSLog(@"Mailto:%@",mailtoAddress);
+    NSString *smtpAdressS;
+    int portI = 0;
+    NSString *hostnameS;
+    NSString *pwdS;
+    NSString *subjectS;
+    NSString *msgS;
+    NSArray * targetMails;
+    
+    fileManager = [NSFileManager defaultManager];
+    NSString *documentsPath = [[NSBundle mainBundle] resourcePath];//[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:@"mail.json"];
+    BOOL fileExists = [fileManager fileExistsAtPath:filePath];
+    if (fileExists) {
+        NSData *jsonData = [fileManager contentsAtPath:filePath];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
+        
+        smtpAdressS =[json objectForKey:@"adresse_smtp"];
+        portI = [[json objectForKey:@"port"] intValue];
+        hostnameS = [json objectForKey:@"nom_utilisateur"];
+        pwdS = [json objectForKey:@"passe"];
+        subjectS = [json objectForKey:@"sujet"];
+        msgS = [json objectForKey:@"message"];
+        
+       targetMails = [json objectForKey:@"destinataires"];
+    }
     
     MCOSMTPSession *smtpSession = [[MCOSMTPSession alloc] init];
-    smtpSession.hostname = @"smtp.gmail.com";
-    smtpSession.port = 465;
-    smtpSession.username = @"antenne@chyz.ca";
-    smtpSession.password = @"maillet20";
+    smtpSession.hostname = smtpAdressS;
+    smtpSession.port = portI;
+    smtpSession.username = hostnameS;
+    smtpSession.password = pwdS;
     smtpSession.authType = MCOAuthTypeSASLPlain;
     smtpSession.connectionType = MCOConnectionTypeTLS;
     
     MCOMessageBuilder *builder = [[MCOMessageBuilder alloc] init];
-    MCOAddress *from = [MCOAddress addressWithDisplayName:@"CHYZSuperSilenceDetector" mailbox:@"antenne@chyz.ca"];
-    MCOAddress *to = [MCOAddress addressWithDisplayName:nil mailbox:@"webmestre@comeul.ca"];
+    MCOAddress *from = [MCOAddress addressWithDisplayName:@"CHYZSuperSilenceDetector" mailbox:hostnameS];
     [[builder header] setFrom:from];
-    [[builder header] setTo:@[to]];
-    [[builder header] setSubject:@"Notif"];
-    [builder setHTMLBody:@"Silence"];
+    
+    NSMutableArray * adressArray = [NSMutableArray.alloc init];
+    for (NSString *recipient in targetMails) {
+        MCOAddress *to = [MCOAddress addressWithDisplayName:nil mailbox:recipient];
+        [adressArray addObject:to];
+    }
+    
+    [[builder header] setTo:adressArray];
+    [[builder header] setSubject:subjectS];
+    [builder setHTMLBody:msgS];
     NSData * rfc822Data = [builder data];
     
     MCOSMTPSendOperation *sendOperation =
     [smtpSession sendOperationWithData:rfc822Data];
     [sendOperation start:^(NSError *error) {
         if(error) {
-            NSLog(@"Error sending email: %@", error);
+            [self.overviewController writeToErrorLabel:[NSString stringWithFormat:@"Error sending email: %@", error.localizedDescription]];
+            DDLogError(@"Error sending email: %@", error);
         } else {
-            NSLog(@"Successfully sent email!");
+            DDLogInfo(@"Successfully sent email!");
         }
     }];
     
     
 }
 
+#pragma mark - OverviewviewController
+
+- (float) getThreshold
+{
+    return decibelMin;
+}
+
+- (void) start
+{
+    bool    noError = YES;
+    
+    fileManager = [NSFileManager defaultManager];
+    NSString *documentsPath = [[NSBundle mainBundle] resourcePath];
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:@"input.json"];
+    BOOL fileExists = [fileManager fileExistsAtPath:filePath];
+    if (fileExists) {
+        NSData *jsonData = [fileManager contentsAtPath:filePath];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
+        
+        NSString *deviceName = [json objectForKey:@"nom_entree"];
+        noError = [audioMan setDeviceWithName:deviceName];
+        
+        decibelMin = [[json objectForKey:@"decibel"] intValue];
+        seconds = [[json objectForKey:@"secondes"] intValue];
+        marging = [[json objectForKey:@"tolerance"] intValue];
+    }
+    if (noError) {
+    isRunning = YES;
+    [self.overviewController setIsRunning:isRunning];
+    [audioMan startListening];
+    } else {
+        [self.overviewController writeToErrorLabel:@"Impossible de trouver le périphérique d'entrée spécifié."];
+    }
+    
+}
+
+- (void) stop
+{
+    isRunning = NO;
+    [self.overviewController setIsRunning:isRunning];
+    [audioMan stopListening];
+    
+    if (countdown)
+    {
+        [countdown invalidate];
+        countdown = nil;
+        errMarging = 0;
+        
+    }
+}
 
 
 #pragma mark - AudioManagerDelegate
@@ -116,16 +230,21 @@
 - (void) setDecibelLevel:(Float32)decibels
 {
     currentDecibels = decibels;
-    if (decibels < 10) {
+    if (decibels < decibelMin) {
         if (!countdown) {
-            NSLog(@"Create Timer");
-            countdown = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(silence:) userInfo:nil repeats:NO];
+            DDLogVerbose(@"Create Timer");
+            dispatch_async(dispatch_get_main_queue(),^{
+                countdown = [NSTimer scheduledTimerWithTimeInterval:seconds target:self selector:@selector(silence:) userInfo:nil repeats:NO];
+            });
         }
     } else if (countdown)
     {
         errMarging++;
-        if (errMarging > 20) {
-            NSLog(@"destroy Timer");
+        if (errMarging > marging) {
+            DDLogVerbose(@"destroy Timer");
+            if (silenceFired) {
+                silenceFired = NO;
+            }
             [countdown invalidate];
             countdown = nil;
             errMarging = 0;
@@ -136,6 +255,11 @@
 - (void) setCurrentSelectedDevice:(NSString*)device
 {
     [self.currentDevice setStringValue:device];
+}
+
+- (void) updatePlotBuffer:(float*)buffer withBufferSize:(float)bufferSize
+{
+    [self.overviewController updatePlotBuffer:buffer withBufferSize:bufferSize];
 }
 
 @end
