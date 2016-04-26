@@ -80,7 +80,7 @@ static const int ddLogLevel = DDLogLevelDebug;
     DDLogError(@"THATS A SILENCE");
     silenceFired = YES;
     errMarging = 0;
-    [self sendMail];
+    [self sendMailWithMessage:nil];
 //    [countdown invalidate];
 //    countdown = nil;
 
@@ -106,7 +106,7 @@ static const int ddLogLevel = DDLogLevelDebug;
     }
 }
 
-- (void) sendMail
+- (void) sendMailWithMessage:(NSString*)msgS
 {
     
     NSString *smtpAdressS;
@@ -114,7 +114,6 @@ static const int ddLogLevel = DDLogLevelDebug;
     NSString *hostnameS;
     NSString *pwdS;
     NSString *subjectS;
-    NSString *msgS;
     NSArray * targetMails;
     
     fileManager = [NSFileManager defaultManager];
@@ -130,45 +129,49 @@ static const int ddLogLevel = DDLogLevelDebug;
         hostnameS = [json objectForKey:@"nom_utilisateur"];
         pwdS = [json objectForKey:@"passe"];
         subjectS = [json objectForKey:@"sujet"];
-        msgS = [json objectForKey:@"message"];
-        
-       targetMails = [json objectForKey:@"destinataires"];
-    }
-    
-    MCOSMTPSession *smtpSession = [[MCOSMTPSession alloc] init];
-    smtpSession.hostname = smtpAdressS;
-    smtpSession.port = portI;
-    smtpSession.username = hostnameS;
-    smtpSession.password = pwdS;
-    smtpSession.authType = MCOAuthTypeSASLPlain;
-    smtpSession.connectionType = MCOConnectionTypeTLS;
-    
-    MCOMessageBuilder *builder = [[MCOMessageBuilder alloc] init];
-    MCOAddress *from = [MCOAddress addressWithDisplayName:@"CHYZSuperSilenceDetector" mailbox:hostnameS];
-    [[builder header] setFrom:from];
-    
-    NSMutableArray * adressArray = [NSMutableArray.alloc init];
-    for (NSString *recipient in targetMails) {
-        MCOAddress *to = [MCOAddress addressWithDisplayName:nil mailbox:recipient];
-        [adressArray addObject:to];
-    }
-    
-    [[builder header] setTo:adressArray];
-    [[builder header] setSubject:subjectS];
-    [builder setHTMLBody:msgS];
-    NSData * rfc822Data = [builder data];
-    
-    MCOSMTPSendOperation *sendOperation =
-    [smtpSession sendOperationWithData:rfc822Data];
-    [sendOperation start:^(NSError *error) {
-        if(error) {
-            [self.overviewController writeToErrorLabel:[NSString stringWithFormat:@"Error sending email: %@", error.localizedDescription]];
-            DDLogError(@"Error sending email: %@", error);
-        } else {
-            DDLogInfo(@"Successfully sent email!");
+        if (!msgS) {
+            msgS = [json objectForKey:@"message"];
         }
-    }];
-    
+        
+        targetMails = [json objectForKey:@"destinataires"];
+        
+        MCOSMTPSession *smtpSession = [[MCOSMTPSession alloc] init];
+        smtpSession.hostname = smtpAdressS;
+        smtpSession.port = portI;
+        smtpSession.username = hostnameS;
+        smtpSession.password = pwdS;
+        smtpSession.authType = MCOAuthTypeSASLPlain;
+        smtpSession.connectionType = MCOConnectionTypeTLS;
+        
+        MCOMessageBuilder *builder = [[MCOMessageBuilder alloc] init];
+        MCOAddress *from = [MCOAddress addressWithDisplayName:@"CHYZSuperSilenceDetector" mailbox:hostnameS];
+        [[builder header] setFrom:from];
+        
+        NSMutableArray * adressArray = [NSMutableArray.alloc init];
+        for (NSString *recipient in targetMails) {
+            MCOAddress *to = [MCOAddress addressWithDisplayName:nil mailbox:recipient];
+            [adressArray addObject:to];
+        }
+        
+        [[builder header] setTo:adressArray];
+        [[builder header] setSubject:subjectS];
+        [builder setHTMLBody:[NSString stringWithFormat:@"%@ - %@", [NSDate date], msgS]];
+        NSData * rfc822Data = [builder data];
+        
+        MCOSMTPSendOperation *sendOperation =
+        [smtpSession sendOperationWithData:rfc822Data];
+        [sendOperation start:^(NSError *error) {
+            if(error) {
+                [self.overviewController writeToErrorLabel:[NSString stringWithFormat:@"Error sending email: %@", error.localizedDescription]];
+                DDLogError(@"Error sending email: %@", error);
+            } else {
+                DDLogInfo(@"Successfully sent email!");
+            }
+        }];
+        
+    } else {
+        DDLogError(@"No configuration file");
+    }
     
 }
 
@@ -244,6 +247,8 @@ static const int ddLogLevel = DDLogLevelDebug;
             DDLogVerbose(@"destroy Timer");
             if (silenceFired) {
                 silenceFired = NO;
+                DDLogError(@"Sound is back up");
+                [self sendMailWithMessage:@"Le son est revenu"];
             }
             [countdown invalidate];
             countdown = nil;
