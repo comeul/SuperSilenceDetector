@@ -822,7 +822,7 @@
                                         <rect key="frame" x="153" y="158" width="291" height="39"/>
                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="6g7-jI-3bc">
                                             <font key="font" metaFont="system" size="10"/>
-                                            <string key="title">*Nombre arbitraire représentant la sensibilité du détecteur. (ex. un 0 pourrait envoyer des courriels inutile alors qu'un gros nombre pourrait ne pas en envoyer.)</string>
+                                            <string key="title">*Nombre arbitraire représentant la sensibilité du détecteur. (ex. un 0 pourrait ne pas envoyer de courriels alors qu'un gros nombre pourrait envoyer des courriels inutile.)</string>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
