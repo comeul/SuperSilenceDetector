@@ -10,7 +10,8 @@
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #include <MailCore/MailCore.h>
 
-static const int ddLogLevel = DDLogLevelVerbose;
+//static const int ddLogLevel = DDLogLevelVerbose;
+static const int ddLogLevel = DDLogLevelDebug;
 
 @implementation ViewController
 {
