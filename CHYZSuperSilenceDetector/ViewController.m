@@ -78,12 +78,14 @@ static const int ddLogLevel = DDLogLevelDebug;
 
 - (void) silence:(NSTimer*)sender
 {
+                dispatch_async(dispatch_get_main_queue(),^{
     DDLogError(@"THATS A SILENCE");
     silenceFired = YES;
     errMarging = 0;
     [self sendMailWithMessage:nil];
 //    [countdown invalidate];
-//    countdown = nil;
+                    //    countdown = nil;
+                });
 
 }
 
@@ -237,9 +239,9 @@ static const int ddLogLevel = DDLogLevelDebug;
     if (decibels < decibelMin) {
         if (!countdown) {
             DDLogVerbose(@"Create Timer");
-            dispatch_async(dispatch_get_main_queue(),^{
+//            dispatch_async(dispatch_get_main_queue(),^{
                 countdown = [NSTimer scheduledTimerWithTimeInterval:seconds target:self selector:@selector(silence:) userInfo:nil repeats:NO];
-            });
+//            });
         }
     } else if (countdown)
     {

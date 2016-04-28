@@ -108,9 +108,10 @@ static const int ddLogLevel = DDLogLevelDebug;
         }
         
         [weakSelf updatePlotBuffer:buffer[0] withBufferSize:bufferSize];
+        
+        [self.delegate setDecibelLevel:decibels];
     });
     
-    [self.delegate setDecibelLevel:decibels];
 }
 
 - (void) updatePlotBuffer:(float*)buffer withBufferSize:(float)bufferSize
