@@ -93,7 +93,7 @@ static const int ddLogLevel = DDLogLevelDebug;
     // EZAudioPlot, EZAudioPlotGL, or whatever visualization you would like to do with
     // the microphone data.
     
-    float decibels = fabsf(*buffer[0])*100;
+    float decibels = fabsf(*buffer[0])*1000;
     
     dispatch_async(dispatch_get_main_queue(),^{
         // Visualize this data brah, buffer[0] = left channel, buffer[1] = right channel

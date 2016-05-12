@@ -32,6 +32,8 @@ static const int ddLogLevel = DDLogLevelDebug;
     bool isRunning;
     
     bool silenceFired;
+    
+    NSDateFormatter *df;
 }
 
 - (void)viewDidLoad {
@@ -56,7 +58,14 @@ static const int ddLogLevel = DDLogLevelDebug;
     
     decibelUpdate = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateDecibelValue:) userInfo:nil repeats:YES];
 
-    
+    df = [NSDateFormatter.alloc init];
+//    [df setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    [df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"fr_CA"]];
+    [df setDateStyle:NSDateFormatterFullStyle];
+    [df setTimeStyle:NSDateFormatterMediumStyle];
+
+    [df setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"EDT"]];
+
     
     
     // Do any additional setup after loading the view.
@@ -158,7 +167,8 @@ static const int ddLogLevel = DDLogLevelDebug;
         
         [[builder header] setTo:adressArray];
         [[builder header] setSubject:subjectS];
-        [builder setHTMLBody:[NSString stringWithFormat:@"%@ - %@", [NSDate date], msgS]];
+        NSString *fDate = [df stringFromDate:[NSDate date]];
+        [builder setHTMLBody:[NSString stringWithFormat:@"%@ - %@", fDate, msgS]];
         NSData * rfc822Data = [builder data];
         
         MCOSMTPSendOperation *sendOperation =
